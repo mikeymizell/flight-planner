@@ -11,25 +11,44 @@
     <title>Flight Planner *TEMP*</title>
 </head>
 <body>
-    <div id="currency">
-        <input type="text" id="amount" placeholder="Enter amount">
-        <div class="from-currency">
-            <p>From</p>
-            <select name="currency" class="currency-choices"> 
-                <!-- <option value="" disabled selected>Select a currency</option> -->
-            </select>
+    <header class="level">
+        <h1 class="title is-1 level-item has-text-centered">Ace Flight Planner</h1>
+    </header>
+
+    <section class="hero is-medium is-success level">
+        <div class="hero-body level-item has-text-centered">
+            <h2 class="title is-2">Allows us to help guide you on your journey to unknown places...</h2>
+
         </div>
-        <div class="to-currency">
-            <p>To</p>
-            <select name="currency" class="currency-choices">
-                <!-- <option value="">To currency</option> -->
-            </select>
+    </section>
+
+    <section class="tile is-ancestor">
+        <div class="tile is-parent notification is-warning" id="currency">
+            <h3>Currency Exchange Rates</h3>
+            <input type="text" id="amount" placeholder="Enter amount">
+            <div class="from-currency">
+                <p>From</p>
+                <select name="currency" class="currency-choices"> 
+                    <!-- <option value="" disabled selected>Select a currency</option> -->
+                </select>
+            </div>
+            <div class="to-currency">
+                <p>To</p>
+                <select name="currency" class="currency-choices">
+                    <!-- <option value="">To currency</option> -->
+                </select>
+            </div>
+            <div id="result">
+                <p>result</p>
+                <button id="currency-exchange">Submit</button>
+            </div>
         </div>
-        <div id="result">
-            <p>result</p>
-            <button id="currency-exchange">Exchange rate</button>
+        <div class="tile is-parent notification is-primary">
+            <h2>Flight Rates</h2>
+            <!--flight planner here-->
         </div>
-    </div>
+    </section>
+
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -37,8 +56,7 @@
     <script src="https://cdn.jsdelivr.net/npm/jquery-ui-touch-punch@0.2.3/jquery.ui.touch-punch.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.15.0/umd/popper.min.js"></script>
     <script src="./assets/js/countries.js"></script>
-    <script src="./assets/js/script.js"></script>
-    
+    <script src="./assets/js/script.js"></script>   
 </body>
 
 </html>
