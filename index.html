@@ -44,8 +44,18 @@
             </div>
         </div>
         <div class="tile is-parent notification is-primary">
-            <h2>Flight Rates</h2>
+            <h2">Flight Rates</h2>
             <!--flight planner here-->
+            <div class = "flight">
+                <input type="text" placeholder="traveling from" id="from-flight" >
+                <input type="text" placeholder="departure date" id="from-date">
+            </div>
+            <div class = "flight">
+                <input type="text" placeholder="traveling to" id="to-flight" >
+                <input type="text" placeholder="return date" id="return-date">
+            </div>
+            <button id="flight-quotes">Get flight quotes</button>
+            <div id="resuling-flight">resulting flight</div>
         </div>
     </section>
 

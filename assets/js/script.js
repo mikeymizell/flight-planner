@@ -33,3 +33,27 @@ exchangeButtonEl.addEventListener("click", function(event){
     event.preventDefault();
     convertCurrency();
 });
+
+
+
+
+
+var destination = "OAK" + "-sky"
+
+
+
+fetch("https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/browsequotes/v1.0/US/USD/en-US/" + destination +"/JFK-sky/2021-11-01?inboundpartialdate=2021-11-05", {
+	"method": "GET",
+	"headers": {
+		"x-rapidapi-host": "skyscanner-skyscanner-flight-search-v1.p.rapidapi.com",
+		"x-rapidapi-key": "13296de5camsh8863768bdc0c0f8p1ad10bjsnec10eb3ec9a4"
+	}
+})
+.then(function(response){
+    response.json().then(function(results){
+        console.log(results)
+    })
+})
+.catch(err => {
+	console.error(err);
+});
