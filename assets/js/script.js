@@ -18,7 +18,7 @@ function convertCurrency(){
     var currencyAmountVal = currencyAmountEl.value;
 
 
-    var currencyURL = `https://v6.exchangerate-api.com/v6/aa73d9d831b172889cb6b7fb/latest/${fromCurrencyEl.value}`;
+    // var currencyURL = `https://v6.exchangerate-api.com/v6/aa73d9d831b172889cb6b7fb/latest/${fromCurrencyEl.value}`;
         fetch(currencyURL).then(function(response){
             response.json().then(function(results){
         //  console.log(results);
