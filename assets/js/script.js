@@ -80,4 +80,15 @@ function flightquotes(){
     });
 }
 
+var getCurrencyApiKey = "c2709f46f398d9368763b061a9735a35";
+var getCurrencyURL = "http://api.countrylayer.com/v2/all?access_key=" + getCurrencyApiKey ;
+function getCountryCurrency(){
+    fetch(getCurrencyURL).then(function(response){
+        return response.json()
+    })
+    .then(function(results){
+        console.log(results)
+    })
+}
+
 flightQuotesBtn.addEventListener("click", flightquotes);
