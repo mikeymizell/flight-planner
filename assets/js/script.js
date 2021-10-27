@@ -41,7 +41,7 @@ exchangeButtonEl.addEventListener("click", function(event){
 // var destination = "OAK" + "-sky"
 var fromFlightEl = document.getElementById("from-flight");
 var toFlightEl = document.getElementById("to-flight");
-var departueDateEl = document.getElementById("from-date");
+var departureDateEl = document.getElementById("from-date");
 var returnDateEl = document.getElementById("return-date");
 var flightQuotesBtn = document.getElementById("flight-quotes");
 var resultingFlightEl = document.getElementById("resuling-flight");
@@ -51,9 +51,15 @@ var currentCountryCurrencyEl= document.getElementById("countrycurrency");
 function flightquotes(){
     var fromInput = fromFlightEl.value + "-sky";
     var toInput = toFlightEl.value + "-sky";
-    var departureDateInput = departueDateEl.value;
+    // $(function() {
+    //     $(departureDateEl).datepicker();
+    //   } );
+    var departureDateInput = departureDateEl.value;
+    // $(departureDateInput).datepicker({
+    //     minDate: 1
+    //   });
     var returnDateInput = returnDateEl.value;
-
+    
 
     fetch("https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/browsequotes/v1.0/US/USD/en-US/"+ fromInput +"/"+ toInput + "/" + departureDateInput +"?inboundpartialdate=" + returnDateInput ,{
 	    method: "GET",
