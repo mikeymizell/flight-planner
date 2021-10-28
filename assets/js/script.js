@@ -79,6 +79,30 @@ function flightquotes(){
                 rates.textContent = "Your trip will cost "+ ratesEl + "$ through " + results.Carriers[i].Name;
                 resultingFlightEl.appendChild(rates);
             }
+            for (let i = 0; i < results.Places.length; i++) {
+                
+            
+            var destinationCountry = results.Places[1].CountryName;
+            var departureCountry = results.Places[0].CountryName
+            function getCountryCurrency(){
+                for (var key of Object.keys(countriesCurrencies)) {
+                    if(countriesCurrencies[key] === destinationCountry || countriesCurrencies[key] === departureCountry){
+                        var twoCurrencies1 = document.createElement("li");
+                        var twoCurrencies2 = document.createElement("li");
+                        // twoCurrencies1.textContent= key;
+                        twoCurrencies2.textContent= "The currencies needed are: " + key;
+                        currentCountryCurrencyEl.append(twoCurrencies1);
+                        currentCountryCurrencyEl.append(twoCurrencies2);
+                        // currentCountryCurrencyEl.textContent = key;
+                        
+                    }
+                    
+                }
+             
+            }
+            }   
+            getCountryCurrency();
+            return destinationCountry;
         })
     
     .catch(err => {
@@ -86,15 +110,8 @@ function flightquotes(){
     });
 }
 
-var getCurrencyApiKey = "c2709f46f398d9368763b061a9735a35";
-var getCurrencyURL = "http://api.countrylayer.com/v2/all?access_key=" + getCurrencyApiKey ;
-function getCountryCurrency(){
-    fetch(getCurrencyURL).then(function(response){
-        return response.json()
-    })
-    .then(function(results){
-        console.log(results)
-    })
-}
+// var getCurrencyApiKey = "c2709f46f398d9368763b061a9735a35";
+// var getCurrencyURL = "http://api.countrylayer.com/v2/all?access_key=" + getCurrencyApiKey ;
+
 
 flightQuotesBtn.addEventListener("click", flightquotes);
