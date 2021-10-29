@@ -49,10 +49,11 @@ var currentCountryCurrencyEl= document.getElementById("countrycurrency");
 var searchAirportsEl = document.getElementById("searchairports");
 var airportSearchResultsEl = document.getElementById("airportsearchresults");
 var searchAirportsBtn = document.getElementById("searchairportsbtn");
+var errorMessageEl = document.getElementById("errormodal");
 
 
 
-
+errorMessageEl.style.display = "none";
 function findairports(){
     var searchInput = searchAirportsEl.value;
 
@@ -180,6 +181,9 @@ function flightquotes(){
     
     .catch(err => {
 	console.error(err);
+    err.preventDefault();
+    errorMessageEl.style.display = "block";
+    // window.alert("wrong")
     });
 }
 
