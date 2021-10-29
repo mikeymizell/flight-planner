@@ -18,7 +18,7 @@ function convertCurrency(){
     var currencyAmountVal = currencyAmountEl.value;
 
 
-    // var currencyURL = `https://v6.exchangerate-api.com/v6/aa73d9d831b172889cb6b7fb/latest/${fromCurrencyEl.value}`;
+    var currencyURL = `https://v6.exchangerate-api.com/v6/aa73d9d831b172889cb6b7fb/latest/${fromCurrencyEl.value}`;
         fetch(currencyURL).then(function(response){
             response.json().then(function(results){
         //  console.log(results);
@@ -46,6 +46,44 @@ var returnDateEl = document.getElementById("return-date");
 var flightQuotesBtn = document.getElementById("flight-quotes");
 var resultingFlightEl = document.getElementById("resuling-flight");
 var currentCountryCurrencyEl= document.getElementById("countrycurrency");
+var searchAirportsEl = document.getElementById("searchairports");
+var airportSearchResultsEl = document.getElementById("airportsearchresults");
+var searchAirportsBtn = document.getElementById("searchairportsbtn");
+
+
+
+
+function findairports(){
+    var searchInput = searchAirportsEl.value;
+
+    fetch("https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/autosuggest/v1.0/US/USD/en-US/?query=" + searchInput, {
+        method: "GET",
+        headers: {
+            "x-rapidapi-host": "skyscanner-skyscanner-flight-search-v1.p.rapidapi.com",
+            "x-rapidapi-key": "13296de5camsh8863768bdc0c0f8p1ad10bjsnec10eb3ec9a4"
+        }
+    })
+    .then(response => {
+        return response.json();
+    }).then (function(results){
+        console.log(results);
+        for (let i = 0; i < results.Places.length; i++) {
+            // console.log(results.Places)
+            var airportList =  results.Places[i].PlaceId;
+            var placeName =  results.Places[i].PlaceName;
+            var countryName =  results.Places[i].CountryName;
+            var eachAirport = document.createElement("li");
+            eachAirport.textContent = "Airport code: "+" "+ airportList.replace('-sky','') + " " + "located in :" +" "+ placeName + " " + "Country " +" "+ countryName ;
+            airportSearchResultsEl.append(eachAirport);
+            
+        }
+    })
+    .catch(err => {
+        console.error(err);
+    });
+}
+
+searchAirportsBtn.addEventListener("click", findairports);
 
 
 function flightquotes(){
