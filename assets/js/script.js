@@ -121,10 +121,20 @@ function flightquotes(){
                 
             
             var destinationCountry = results.Places[1].CountryName;
-            var departureCountry = results.Places[0].CountryName
+            var departureCountry = results.Places[0].CountryName;
+
+
             function getCountryCurrency(){
                 for (var key of Object.keys(countriesCurrencies)) {
                     if(countriesCurrencies[key] === destinationCountry || countriesCurrencies[key] === departureCountry){
+                        if (destinationCountry = "Austria"||"Belgium"||"Cyprus"||"Estonia"||"Finland"||"France"||"Germany"||"Greece"||"Ireland"||
+                        "Italy"||"Latvia"||"Lithuania"||"Luxembourg"||"Malta"||"Netherlands"||"Portugal"||"Slovakia"||"Slovenia"||"Spain"){
+                            destinationCountry = "European Union"
+                        }
+                        if (departureCountry = "Austria"||"Belgium"||"Cyprus"||"Estonia"||"Finland"||"France"||"Germany"||"Greece"||"Ireland"||
+                        "Italy"||"Latvia"||"Lithuania"||"Luxembourg"||"Malta"||"Netherlands"||"Portugal"||"Slovakia"||"Slovenia"||"Spain"){
+                            departureCountry = "European Union"
+                        }
                         var twoCurrencies1 = document.createElement("li");
                         var twoCurrencies2 = document.createElement("li");
                         // twoCurrencies1.textContent= key;
