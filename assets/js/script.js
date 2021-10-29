@@ -117,24 +117,49 @@ function flightquotes(){
                 rates.textContent = "Your trip will cost "+ ratesEl + "$ through " + results.Carriers[i].Name;
                 resultingFlightEl.appendChild(rates);
             }
+            // for (let i = 0; i < results.Places.length; i++) {
             for (let i = 0; i < results.Places.length; i++) {
                 
             
             var destinationCountry = results.Places[1].CountryName;
+            console.log(destinationCountry);
             var departureCountry = results.Places[0].CountryName;
+            console.log(departureCountry);
+            // var destinationCountry= "";
+            // var departureCountry = "";
+
 
 
             function getCountryCurrency(){
                 for (var key of Object.keys(countriesCurrencies)) {
+                    // if(countriesCurrencies[key] === destinationCountry || countriesCurrencies[key] === departureCountry){
                     if(countriesCurrencies[key] === destinationCountry || countriesCurrencies[key] === departureCountry){
-                        if (destinationCountry = "Austria"||"Belgium"||"Cyprus"||"Estonia"||"Finland"||"France"||"Germany"||"Greece"||"Ireland"||
-                        "Italy"||"Latvia"||"Lithuania"||"Luxembourg"||"Malta"||"Netherlands"||"Portugal"||"Slovakia"||"Slovenia"||"Spain"){
-                            destinationCountry = "European Union"
-                        }
-                        if (departureCountry = "Austria"||"Belgium"||"Cyprus"||"Estonia"||"Finland"||"France"||"Germany"||"Greece"||"Ireland"||
-                        "Italy"||"Latvia"||"Lithuania"||"Luxembourg"||"Malta"||"Netherlands"||"Portugal"||"Slovakia"||"Slovenia"||"Spain"){
-                            departureCountry = "European Union"
-                        }
+                        // for (let i = 0; i < results.Places.length; i++) {
+                            
+                        
+                        // if (destinationCountry === "Austria"||"Belgium"||"Cyprus"||"Estonia"||"Finland"||"France"||"Germany"||"Greece"||"Ireland"||
+                        // "Italy"||"Latvia"||"Lithuania"||"Luxembourg"||"Malta"||"Netherlands"||"Portugal"||"Slovakia"||"Slovenia"||"Spain"){
+                        //     destinationCountry = "European Union"
+                            
+                        // }
+                            
+                        //  if( results.Places[1].CountryName ==="Benin"||"Burkina Faso"||"Côte d'Ivoire"||"Guinea-Bissau"||"Mali"||"Niger"||"Senegal"||"Togo"
+                        // ||"Cameroon"||"Central African Republic"||"Chad"||"Republic of the Congo"||"Equatorial Guinea"||"Gabon"){
+                        //     destinationCountry ="CFA"
+                        // } if (results.Places[1].CountryName === "French Polynesia"||"New Caledonia"||"Wallis and Futuna"){
+                        //     destinationCountry ="Collectivités d'Outre-Mer"
+                        // }
+                        
+                        // if (departureCountry ==="Austria"||"Belgium"||"Cyprus"||"Estonia"||"Finland"||"France"||"Germany"||"Greece"||"Ireland"||
+                        // "Italy"||"Latvia"||"Lithuania"||"Luxembourg"||"Malta"||"Netherlands"||"Portugal"||"Slovakia"||"Slovenia"||"Spain"){
+                        //     departureCountry ="European Union";}
+                        // }if( results.Places[0].CountryName=== "Benin"||"Burkina Faso"||"Côte d'Ivoire"||"Guinea-Bissau"||"Mali"||"Niger"||"Senegal"||"Togo"
+                        // ||"Cameroon"||"Central African Republic"||"Chad"||"Republic of the Congo"||"Equatorial Guinea"||"Gabon"){
+                        //     departureCountry ="CFA";
+                        // }if (results.Places[0].CountryName === "French Polynesia"||"New Caledonia"||"Wallis and Futuna"){
+                        //     departureCountry = "Collectivités d'Outre-Mer";
+                        // }
+
                         var twoCurrencies1 = document.createElement("li");
                         var twoCurrencies2 = document.createElement("li");
                         // twoCurrencies1.textContent= key;
@@ -143,9 +168,9 @@ function flightquotes(){
                         currentCountryCurrencyEl.append(twoCurrencies2);
                         // currentCountryCurrencyEl.textContent = key;
                         
-                    }
+                    }}
                     
-                }
+                
              
             }
             }   
