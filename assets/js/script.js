@@ -115,12 +115,31 @@ function flightquotes(){
     })
         .then(function(results){
             // console.log(results);
-            if( (results.code && results.code === 429)){
-                console.log(results);
-                return new Promise(function(resolve, reject){
-                    reject("there was an error")
-                })
-            } resultingFlightEl.innerHTML = "";
+            // function d(some){
+            //     console.log("there")
+            //     currentCountryCurrencyEl.innerHTML = "";
+            //     resultingFlightEl.innerHTML = "";
+            //     errorMessageEl.style.display = "block";
+            //     errorMessageEl.textContent="Please try your request later";
+            //     errorMessageEl.style.display = "block";
+            // }
+            // if( (results.code && results.code === 429)){
+            //     console.log(results);
+
+            //     let  myPromise =  new Promise(function(resolve, reject){
+            //         resolve("")
+            //         reject("there was an error")
+
+            //         myPromise.then(
+            //             function(value){d(value)},
+            //             function(error){d(error)}
+
+            //             )
+
+            //         return myPromise
+            //     })
+            // }
+             resultingFlightEl.innerHTML = "";
             for (let i = 0; i < results.Quotes.length; i++) {
                 var ratesEl = results.Quotes[i].MinPrice;
                 rates = document.createElement("li");
@@ -145,31 +164,6 @@ function flightquotes(){
                 for (var key of Object.keys(countriesCurrencies)) {
                     // if(countriesCurrencies[key] === destinationCountry || countriesCurrencies[key] === departureCountry){
                     if(countriesCurrencies[key] === destinationCountry || countriesCurrencies[key] === departureCountry){
-                        // for (let i = 0; i < results.Places.length; i++) {
-                            
-                        
-                        // if (destinationCountry === "Austria"||"Belgium"||"Cyprus"||"Estonia"||"Finland"||"France"||"Germany"||"Greece"||"Ireland"||
-                        // "Italy"||"Latvia"||"Lithuania"||"Luxembourg"||"Malta"||"Netherlands"||"Portugal"||"Slovakia"||"Slovenia"||"Spain"){
-                        //     destinationCountry = "European Union"
-                            
-                        // }
-                            
-                        //  if( results.Places[1].CountryName ==="Benin"||"Burkina Faso"||"Côte d'Ivoire"||"Guinea-Bissau"||"Mali"||"Niger"||"Senegal"||"Togo"
-                        // ||"Cameroon"||"Central African Republic"||"Chad"||"Republic of the Congo"||"Equatorial Guinea"||"Gabon"){
-                        //     destinationCountry ="CFA"
-                        // } if (results.Places[1].CountryName === "French Polynesia"||"New Caledonia"||"Wallis and Futuna"){
-                        //     destinationCountry ="Collectivités d'Outre-Mer"
-                        // }
-                        
-                        // if (departureCountry ==="Austria"||"Belgium"||"Cyprus"||"Estonia"||"Finland"||"France"||"Germany"||"Greece"||"Ireland"||
-                        // "Italy"||"Latvia"||"Lithuania"||"Luxembourg"||"Malta"||"Netherlands"||"Portugal"||"Slovakia"||"Slovenia"||"Spain"){
-                        //     departureCountry ="European Union";}
-                        // }if( results.Places[0].CountryName=== "Benin"||"Burkina Faso"||"Côte d'Ivoire"||"Guinea-Bissau"||"Mali"||"Niger"||"Senegal"||"Togo"
-                        // ||"Cameroon"||"Central African Republic"||"Chad"||"Republic of the Congo"||"Equatorial Guinea"||"Gabon"){
-                        //     departureCountry ="CFA";
-                        // }if (results.Places[0].CountryName === "French Polynesia"||"New Caledonia"||"Wallis and Futuna"){
-                        //     departureCountry = "Collectivités d'Outre-Mer";
-                        // }
 
                         var twoCurrencies1 = document.createElement("li");
                         var twoCurrencies2 = document.createElement("li");
@@ -190,12 +184,12 @@ function flightquotes(){
         })
     
     .catch(err => {
-	console.error(err);
+	console.log(err);
     currentCountryCurrencyEl.innerHTML = "";
     resultingFlightEl.innerHTML = "";
     errorMessageEl.style.display = "block";
     
-    // window.alert("wrong")
+    
     });
 }
 
