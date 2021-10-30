@@ -9,7 +9,7 @@ toCurrencyEl = document.querySelector(".to-currency select")
 for (let i = 0; i < currencies.length; i++) {
     for (differentCurrencies in PossibleCurrencies) {
         // console.log(differentCurrencies)
-        var optioninHtml = `<option value="${differentCurrencies}">${differentCurrencies}</option>`;
+        var optioninHtml = `<option value="${differentCurrencies}">${differentCurrencies}-${PossibleCurrencies[differentCurrencies]}</option>`;
         currencies[i].insertAdjacentHTML("beforeend", optioninHtml);
     }
 }     
@@ -68,6 +68,7 @@ function findairports(){
         return response.json();
     }).then (function(results){
         console.log(results);
+        airportSearchResultsEl.innerHTML="";
         for (let i = 0; i < results.Places.length; i++) {
             // console.log(results.Places)
             var airportList =  results.Places[i].PlaceId;
@@ -75,6 +76,7 @@ function findairports(){
             var countryName =  results.Places[i].CountryName;
             var eachAirport = document.createElement("li");
             eachAirport.textContent = "Airport code: "+" "+ airportList.replace('-sky','') + " " + "located in :" +" "+ placeName + " " + "Country " +" "+ countryName ;
+            
             airportSearchResultsEl.append(eachAirport);
             
         }
@@ -88,6 +90,7 @@ searchAirportsBtn.addEventListener("click", findairports);
 
 
 function flightquotes(){
+    errorMessageEl.style.display = "none";
     var fromInput = fromFlightEl.value + "-sky";
     var toInput = toFlightEl.value + "-sky";
     // $(function() {
@@ -111,7 +114,13 @@ function flightquotes(){
        return response.json()
     })
         .then(function(results){
-            console.log(results);
+            // console.log(results);
+            if( (results.code && results.code === 429)){
+                console.log(results);
+                return new Promise(function(resolve, reject){
+                    reject("there was an error")
+                })
+            } resultingFlightEl.innerHTML = "";
             for (let i = 0; i < results.Quotes.length; i++) {
                 var ratesEl = results.Quotes[i].MinPrice;
                 rates = document.createElement("li");
@@ -132,6 +141,7 @@ function flightquotes(){
 
 
             function getCountryCurrency(){
+                currentCountryCurrencyEl.innerHTML = "";
                 for (var key of Object.keys(countriesCurrencies)) {
                     // if(countriesCurrencies[key] === destinationCountry || countriesCurrencies[key] === departureCountry){
                     if(countriesCurrencies[key] === destinationCountry || countriesCurrencies[key] === departureCountry){
@@ -181,8 +191,10 @@ function flightquotes(){
     
     .catch(err => {
 	console.error(err);
-    err.preventDefault();
+    currentCountryCurrencyEl.innerHTML = "";
+    resultingFlightEl.innerHTML = "";
     errorMessageEl.style.display = "block";
+    
     // window.alert("wrong")
     });
 }
