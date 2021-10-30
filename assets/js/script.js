@@ -97,6 +97,9 @@ function flightquotes(){
     //     $(departureDateEl).datepicker();
     //   } );
     var departureDateInput = departureDateEl.value;
+
+
+//    $(function(){ $("#from-date").datepicker()});
     // $(departureDateInput).datepicker({
     //     minDate: 1
     //   });
