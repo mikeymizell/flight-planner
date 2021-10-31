@@ -24,13 +24,14 @@
 
     <section class="tile is-ancestor is-vertical">
 
-        <div class="tile is-parent notification is-primary is-fullhd level-item">
+        <div class="tile is-parent notification is-primary is-fullhd level-item .img-responsive img2">
             <h2">Flight Rates</h2>
             <!--flight planner here-->
             <div class="flight">
                 <input type="text" placeholder="search airports" id="searchairports">
                 <button id="searchairportsbtn" class="button is-link is-small">Search airports</button>
                 <ul id="airportsearchresults"></ul>
+                <p id="noresult">Try another search</p>
             </div>
             <div class = "flight">
                 <input type="text" placeholder="from airport code" id="from-flight" >
@@ -45,9 +46,9 @@
             <ul id="countrycurrency"></ul>
             <p id="errormodal">No results found. Try another airport, date or try again later.</p>
         </div>
-        <div class="tile is-parent notification is-warning is-fullhd level-item" id="currency">
+        <div class="tile is-parent notification is-warning is-fullhd level-item .img-responsive img1" id="currency">
             <h3">Currency Exchange Rates</h3>
-            <input type="text" id="amount" placeholder="Enter amount">
+            <input type="number" id="amount" placeholder="Enter amount">
             <div class="from-currency">
                 <p>From</p>
                 <select name="currency" class="currency-choices"> 
@@ -60,8 +61,8 @@
                     <!-- <option value="">To currency</option> -->
                 </select>
             </div>
-            <div id="result">
-                <p>result here</p>
+            <div >
+                <p id="result">result here</p>
                 <button id="currency-exchange" class="button is-link">Submit</button>
             </div>
         </div>

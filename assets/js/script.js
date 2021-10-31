@@ -13,10 +13,8 @@ for (let i = 0; i < currencies.length; i++) {
         currencies[i].insertAdjacentHTML("beforeend", optioninHtml);
     }
 }     
-
 function convertCurrency(){
     var currencyAmountVal = currencyAmountEl.value;
-
 
     var currencyURL = `https://v6.exchangerate-api.com/v6/aa73d9d831b172889cb6b7fb/latest/${fromCurrencyEl.value}`;
         fetch(currencyURL).then(function(response){
@@ -50,9 +48,11 @@ var searchAirportsEl = document.getElementById("searchairports");
 var airportSearchResultsEl = document.getElementById("airportsearchresults");
 var searchAirportsBtn = document.getElementById("searchairportsbtn");
 var errorMessageEl = document.getElementById("errormodal");
+var noResultEl = document.getElementById("noresult");
 
 
 
+noResultEl.style.display = "none";
 errorMessageEl.style.display = "none";
 function findairports(){
     var searchInput = searchAirportsEl.value;
@@ -68,9 +68,15 @@ function findairports(){
         return response.json();
     }).then (function(results){
         console.log(results);
+
         airportSearchResultsEl.innerHTML="";
+        if(results.Places.length < 1  ){
+            // alert("hi")
+            noResultEl.style.display="block"
+        }
         for (let i = 0; i < results.Places.length; i++) {
-            // console.log(results.Places)
+ 
+            console.log(results.Places)
             var airportList =  results.Places[i].PlaceId;
             var placeName =  results.Places[i].PlaceName;
             var countryName =  results.Places[i].CountryName;
