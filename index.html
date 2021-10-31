@@ -25,7 +25,7 @@
     <section class="tile is-ancestor is-vertical">
 
         <div class="tile is-parent notification is-primary is-fullhd level-item .img-responsive img2">
-            <h2">Flight Rates</h2>
+            <h2" class="title is-2 has-text-success">Flight Rates</h2>
             <!--flight planner here-->
             <div class="flight control">
                 <input type="text" placeholder="search airports" id="searchairports" class="input">
@@ -47,22 +47,22 @@
             <p id="errormodal">No results found. Try another airport, date or try again later.</p>
         </div>
         <div class="tile is-parent notification is-warning is-fullhd level-item .img-responsive img1 control" id="currency">
-            <h3">Currency Exchange Rates</h3>
+            <h3" class="title is-2 has-text-white">Currency Exchange Rates</h3>
             <input type="number" id="amount" placeholder="Enter amount" class="input">
             <div class="from-currency">
-                <p>From</p>
+                <p class="subtitle is-4">From</p>
                 <select name="currency" class="currency-choices"> 
                     <!-- <option value="" disabled selected>Select a currency</option> -->
                 </select>
             </div>
             <div class="to-currency">
-                <p>To</p>
+                <p class="subtitle is-4">To</p>
                 <select name="currency" class="currency-choices">
                     <!-- <option value="">To currency</option> -->
                 </select>
             </div>
             <div >
-                <p id="result">result here</p>
+                <p id="result" class="subtitle is-4 has-text-danger-dark">result here</p>
                 <button id="currency-exchange" class="button is-link">Submit</button>
             </div>
         </div>

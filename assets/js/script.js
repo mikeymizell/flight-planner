@@ -22,6 +22,10 @@ function convertCurrency(){
         //  console.log(results);
             var singleRate = results.conversion_rates[toCurrencyEl.value];
             var totalPrice = (currencyAmountVal * singleRate).toFixed(2);
+            currencyResultEl.classList.add("has-text-danger-dark")
+            currencyResultEl.classList.add("has-background-black")
+            currencyResultEl.classList.add("has-text-weight-semibold")
+            currencyResultEl.classList.add("is-size-5")
             currencyResultEl.innerText = `${currencyAmountVal} ${fromCurrencyEl.value} = ${totalPrice} ${toCurrencyEl.value}`;
          
     })});
