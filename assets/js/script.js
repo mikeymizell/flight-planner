@@ -72,6 +72,9 @@ function findairports(){
         airportSearchResultsEl.innerHTML="";
         if(results.Places.length < 1  ){
             // alert("hi")
+            
+            noResultEl.classList.add("has-background-black")
+            noResultEl.classList.add("has-text-danger-dark")
             noResultEl.style.display="block"
         }
         for (let i = 0; i < results.Places.length; i++) {
@@ -81,7 +84,10 @@ function findairports(){
             var placeName =  results.Places[i].PlaceName;
             var countryName =  results.Places[i].CountryName;
             var eachAirport = document.createElement("li");
-            eachAirport.textContent = "Airport code: "+" "+ airportList.replace('-sky','') + " " + "located in :" +" "+ placeName + " " + "Country " +" "+ countryName ;
+            eachAirport.classList.add("has-text-danger-dark")
+            eachAirport.classList.add("has-background-black")
+            
+            eachAirport.textContent = "Airport code : "+" "+ airportList.replace('-sky','') + ". " + "Located in : " +" "+ placeName + ". " + "Country: " +" "+ countryName ;
             
             airportSearchResultsEl.append(eachAirport);
             

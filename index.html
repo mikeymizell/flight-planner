@@ -27,28 +27,28 @@
         <div class="tile is-parent notification is-primary is-fullhd level-item .img-responsive img2">
             <h2">Flight Rates</h2>
             <!--flight planner here-->
-            <div class="flight">
-                <input type="text" placeholder="search airports" id="searchairports">
+            <div class="flight control">
+                <input type="text" placeholder="search airports" id="searchairports" class="input">
                 <button id="searchairportsbtn" class="button is-link is-small">Search airports</button>
                 <ul id="airportsearchresults"></ul>
                 <p id="noresult">Try another search</p>
             </div>
-            <div class = "flight">
-                <input type="text" placeholder="from airport code" id="from-flight" >
-                <input type="text" placeholder="departing yyyy-mm-dd" id="from-date">
+            <div class = "flight control">
+                <input type="text" placeholder="from airport code" id="from-flight" class="input" >
+                <input type="number" placeholder="departing yyyy-mm-dd" id="from-date" class="input">
             </div>
-            <div class = "flight">
-                <input type="text" placeholder="to airport code" id="to-flight" >
-                <input type="text" placeholder="returning yyyy-mm-dd" id="return-date">
+            <div class = "flight control">
+                <input type="text" placeholder="to airport code" id="to-flight" class="input" >
+                <input type="number" placeholder="returning yyyy-mm-dd (optional)" id="return-date" class="input">
             </div>
             <button id="flight-quotes" class="button is-link">Get flight quotes</button>
             <ul id="resuling-flight"></ul>
             <ul id="countrycurrency"></ul>
             <p id="errormodal">No results found. Try another airport, date or try again later.</p>
         </div>
-        <div class="tile is-parent notification is-warning is-fullhd level-item .img-responsive img1" id="currency">
+        <div class="tile is-parent notification is-warning is-fullhd level-item .img-responsive img1 control" id="currency">
             <h3">Currency Exchange Rates</h3>
-            <input type="number" id="amount" placeholder="Enter amount">
+            <input type="number" id="amount" placeholder="Enter amount" class="input">
             <div class="from-currency">
                 <p>From</p>
                 <select name="currency" class="currency-choices"> 
