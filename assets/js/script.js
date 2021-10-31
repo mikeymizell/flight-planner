@@ -54,6 +54,7 @@ var searchAirportsBtn = document.getElementById("searchairportsbtn");
 var errorMessageEl = document.getElementById("errormodal");
 var noResultEl = document.getElementById("noresult");
 var span = document.getElementsByClassName("close")[0];
+var x = document.getElementById("x")
 
 
 
@@ -229,15 +230,25 @@ function flightquotes(){
             getCountryCurrency();
             return destinationCountry;
         })
-    
+         
     .catch(err => {
 	console.log(err);
     currentCountryCurrencyEl.innerHTML = "";
     resultingFlightEl.innerHTML = "";
-    errorMessageEl.classList.add("has-background-black")
-    errorMessageEl.classList.add("has-text-danger-dark")
-    errorMessageEl.classList.add("has-text-weight-light")
-    errorMessageEl.style.display = "block";
+    // errorMessageEl.classList.add("has-background-black")
+    // errorMessageEl.classList.add("has-text-danger-dark")
+    // errorMessageEl.classList.add("has-text-weight-light")
+    // errorMessageEl.style.display = "block";
+    errorMessageEl.style.display = "block"
+    x.onclick = function() {
+        errorMessageEl.style.display = "none"
+      }
+      
+      window.onclick = function(event) {
+        if (event.target == errorMessageEl) {
+          errorMessageEl.style.display = "none";
+        }
+      }
     
     
     });

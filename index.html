@@ -50,7 +50,13 @@
             <button id="flight-quotes" class="button is-link">Get flight quotes</button>
             <ul id="resuling-flight"></ul>
             <ul id="countrycurrency"></ul>
-            <p id="errormodal">No results found. Try another airport, date or try again later.</p>
+            <div id="errormodal" class="moda">
+                <div class="moda-content">
+                    <span class="close" id="x">&times;</span>
+                    <p>No results found. Try another airport, date or try again later.</p>
+                </div>
+            </div>
+            <!-- <p id="errormodal">No results found. Try another airport, date or try again later.</p> -->
         </div>
         <div class="tile is-parent notification is-warning is-fullhd level-item .img-responsive img1 control" id="currency">
             <h3" class="title is-2 has-text-white">Currency Exchange Rates</h3>
