@@ -75,6 +75,7 @@ function findairports(){
             
             noResultEl.classList.add("has-background-black")
             noResultEl.classList.add("has-text-danger-dark")
+            noResultEl.classList.add("has-text-weight-light")
             noResultEl.style.display="block"
         }
         for (let i = 0; i < results.Places.length; i++) {
@@ -86,6 +87,8 @@ function findairports(){
             var eachAirport = document.createElement("li");
             eachAirport.classList.add("has-text-danger-dark")
             eachAirport.classList.add("has-background-black")
+            eachAirport.classList.add("has-text-weight-semibold")
+            eachAirport.classList.add("is-size-5")
             
             eachAirport.textContent = "Airport code : "+" "+ airportList.replace('-sky','') + ". " + "Located in : " +" "+ placeName + ". " + "Country: " +" "+ countryName ;
             
@@ -158,7 +161,11 @@ function flightquotes(){
             for (let i = 0; i < results.Quotes.length; i++) {
                 var ratesEl = results.Quotes[i].MinPrice;
                 rates = document.createElement("li");
-                rates.textContent = "Your trip will cost "+ ratesEl + "$ through " + results.Carriers[i].Name;
+                rates.classList.add("has-background-black")
+                rates.classList.add("is-size-5")
+                // rates.classList.add("has-text-danger-dark")
+                rates.classList.add("has-text-weight-semibold")
+                rates.textContent = "Your trip will cost : "+ ratesEl + " $ ; through : " + results.Carriers[i].Name;
                 resultingFlightEl.appendChild(rates);
             }
             // for (let i = 0; i < results.Places.length; i++) {
@@ -182,6 +189,12 @@ function flightquotes(){
 
                         var twoCurrencies1 = document.createElement("li");
                         var twoCurrencies2 = document.createElement("li");
+                        twoCurrencies1.classList.add("has-background-black")
+                        twoCurrencies1.classList.add("has-text-danger-dark")
+                        twoCurrencies1.classList.add("has-text-weight-semibold")
+                        twoCurrencies2.classList.add("has-background-black")
+                        twoCurrencies2.classList.add("has-text-danger-dark")
+                        twoCurrencies2.classList.add("has-text-weight-semibold")
                         // twoCurrencies1.textContent= key;
                         twoCurrencies2.textContent= "The currencies needed are: " + key;
                         currentCountryCurrencyEl.append(twoCurrencies1);
@@ -202,6 +215,9 @@ function flightquotes(){
 	console.log(err);
     currentCountryCurrencyEl.innerHTML = "";
     resultingFlightEl.innerHTML = "";
+    errorMessageEl.classList.add("has-background-black")
+    errorMessageEl.classList.add("has-text-danger-dark")
+    errorMessageEl.classList.add("has-text-weight-light")
     errorMessageEl.style.display = "block";
     
     
