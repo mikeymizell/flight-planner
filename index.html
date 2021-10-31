@@ -29,7 +29,7 @@
             <!--flight planner here-->
             <div class="flight control">
                 <input type="text" placeholder="search airports" id="searchairports" class="input">
-                <button id="searchairportsbtn" class="button is-link">Search airports</button>
+                <button id="searchairportsbtn" class="button  btn is-link">Search airports</button>
                 <ul id="airportsearchresults"></ul>
                 <div id="noresult" class="moda">
                     <div class="moda-content">
@@ -47,7 +47,7 @@
                 <input type="text" placeholder="to airport code" id="to-flight" class="input" >
                 <input type="text" placeholder="returning yyyy-mm-dd (optional)" id="return-date" class="input">
             </div>
-            <button id="flight-quotes" class="button is-link">Get flight quotes</button>
+            <button id="flight-quotes" class="button btn is-link">Get flight quotes</button>
             <ul id="resuling-flight"></ul>
             <ul id="countrycurrency"></ul>
             <div id="errormodal" class="moda">
@@ -74,8 +74,15 @@
                 </select>
             </div>
             <div >
-                <p id="result" class="subtitle is-4 has-text-danger-dark">result here</p>
-                <button id="currency-exchange" class="button is-link">Submit</button>
+                <div id="result" class="moda">
+                    <div class="moda-content">
+                        <span class="close" id="y">&times;</span>
+                        <p>result here</p>
+                        <!-- <p class="subtitle is-4 has-text-danger-dark">result here</p> -->
+                    </div>
+                </div>
+                <!-- <p id="result" class="subtitle is-4 has-text-danger-dark">result here</p> -->
+                <button id="currency-exchange" class="button btn is-link">Get exchange rate</button>
             </div>
         </div>
     </section>

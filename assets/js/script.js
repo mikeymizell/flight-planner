@@ -4,6 +4,7 @@ currencies = document.querySelectorAll(".currency-choices")
 exchangeButtonEl = document.getElementById("currency-exchange")
 fromCurrencyEl = document.querySelector(".from-currency select")
 toCurrencyEl = document.querySelector(".to-currency select")
+var y = document.getElementById("y")
 
 
 for (let i = 0; i < currencies.length; i++) {
@@ -23,17 +24,30 @@ function convertCurrency(){
             var singleRate = results.conversion_rates[toCurrencyEl.value];
             var totalPrice = (currencyAmountVal * singleRate).toFixed(2);
             currencyResultEl.classList.add("has-text-danger-dark")
-            currencyResultEl.classList.add("has-background-black")
+            currencyResultEl.classList.add("has-background-success")
             currencyResultEl.classList.add("has-text-weight-semibold")
-            currencyResultEl.classList.add("is-size-5")
-            currencyResultEl.innerText = `${currencyAmountVal} ${fromCurrencyEl.value} = ${totalPrice} ${toCurrencyEl.value}`;
+            currencyResultEl.classList.add("is-size-1")
+            currencyResultEl.innerText = `${currencyAmountVal} ${fromCurrencyEl.value} = ${totalPrice} ${toCurrencyEl.value} 
+            
+            
+            "Click anywhere to continue!" `;
          
     })});
 }
 
 exchangeButtonEl.addEventListener("click", function(event){
-    event.preventDefault();
+    // event.preventDefault();
     convertCurrency();
+    currencyResultEl.style.display = "block"
+            y.onclick = function() {
+                currencyResultEl.style.display = "none";
+              }
+              
+              window.onclick = function(event) {
+                if (event.target == currencyResultEl) {
+                  currencyResultEl.style.display = "none";
+                }
+              }
 });
 
 
@@ -212,9 +226,11 @@ function flightquotes(){
                         twoCurrencies1.classList.add("has-background-black")
                         twoCurrencies1.classList.add("has-text-danger-dark")
                         twoCurrencies1.classList.add("has-text-weight-semibold")
+                        twoCurrencies1.classList.add("is-size-6")
                         twoCurrencies2.classList.add("has-background-black")
                         twoCurrencies2.classList.add("has-text-danger-dark")
                         twoCurrencies2.classList.add("has-text-weight-semibold")
+                        twoCurrencies2.classList.add("is-size-6")
                         // twoCurrencies1.textContent= key;
                         twoCurrencies2.textContent= "The currencies needed are: " + key;
                         currentCountryCurrencyEl.append(twoCurrencies1);
