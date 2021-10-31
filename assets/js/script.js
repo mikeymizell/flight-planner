@@ -53,6 +53,7 @@ var airportSearchResultsEl = document.getElementById("airportsearchresults");
 var searchAirportsBtn = document.getElementById("searchairportsbtn");
 var errorMessageEl = document.getElementById("errormodal");
 var noResultEl = document.getElementById("noresult");
+var span = document.getElementsByClassName("close")[0];
 
 
 
@@ -77,10 +78,24 @@ function findairports(){
         if(results.Places.length < 1  ){
             // alert("hi")
             
-            noResultEl.classList.add("has-background-black")
-            noResultEl.classList.add("has-text-danger-dark")
-            noResultEl.classList.add("has-text-weight-light")
-            noResultEl.style.display="block"
+            // noResultEl.classList.add("has-background-black")
+            // noResultEl.classList.add("has-text-danger-dark")
+            // noResultEl.classList.add("has-text-weight-light")
+            // noResultEl.style.display="block"
+            noResultEl.style.display = "block"
+            span.onclick = function() {
+                noResultEl.style.display = "none";
+              }
+              
+              window.onclick = function(event) {
+                if (event.target == noResultEl) {
+                  noResultEl.style.display = "none";
+                }
+              }
+
+
+
+
         }
         for (let i = 0; i < results.Places.length; i++) {
  
