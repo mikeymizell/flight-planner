@@ -275,3 +275,20 @@ function flightquotes(){
 
 
 flightQuotesBtn.addEventListener("click", flightquotes);
+
+
+
+var searchedAirportsBtn = document.getElementById("searchedairbtn");
+var deleteHistoryBtn = document.getElementById("deletehistorybtn");
+var searchHistoryEl = document.getElementById("searchhistory");
+var searchedAirports = JSON.parse(localStorage.getItem("airports")) || [];
+
+function saveAirports(){
+    var airportname = searchAirportsEl.value;
+    if (searchAirportsEl.indexOf(airportname)===-1){
+    searchAirportsEl.push(airportname);
+    localStorage.setItem("airports", JSON.stringify(searchAirportsEl));
+    }
+    loadAirports();
+    return searchAirportsEl.value;
+}
