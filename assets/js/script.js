@@ -309,6 +309,7 @@ function loadAirports(){
        
     var searchedHistoryEl = document.createElement("li");
     searchedHistoryEl.setAttribute("value", loadAirports[i]);
+    searchedHistoryEl.classList.add("has-background-black")
     searchedHistoryEl.classList.add("is-success")
     searchedHistoryEl.textContent = airport;
     // searchedHistoryEl.addEventListener("click", function(event){
