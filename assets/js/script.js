@@ -292,3 +292,25 @@ function saveAirports(){
     loadAirports();
     return searchAirportsEl.value;
 }
+
+function loadAirports(){
+    searchHistoryEl.innerHTML = "";
+    var loadAirports =   JSON.parse(localStorage.getItem("airports")) || [];
+    for (let i = 0; i < loadAirports.length; i++) {
+        
+        var airport = loadAirports[i];
+        
+    
+    var searchedHistoryEl = document.createElement("button");
+    searchedHistoryEl.setAttribute("value", loadAirports[i]);
+    searchedHistoryEl.textContent = airport;
+    searchedHistoryEl.addEventListener("click", function(event){
+        searchAirportsEl.innerHTML = "";
+        findairports(loadAirports[i]);
+        event.preventDefault();
+        
+    })
+
+   searchHistoryEl.append(searchedHistoryEl);
+    }
+}
