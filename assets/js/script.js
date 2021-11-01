@@ -68,13 +68,17 @@ var searchAirportsBtn = document.getElementById("searchairportsbtn");
 var errorMessageEl = document.getElementById("errormodal");
 var noResultEl = document.getElementById("noresult");
 var span = document.getElementsByClassName("close")[0];
-var x = document.getElementById("x")
+var x = document.getElementById("x");
+var searchInput = searchAirportsEl.value;
+
 
 
 
 noResultEl.style.display = "none";
 errorMessageEl.style.display = "none";
-function findairports(){
+airportSearchResultsEl.style.display = "block";
+function findairports(searchInput){
+    airportSearchResultsEl.style.display = "block";
     var searchInput = searchAirportsEl.value;
 
     fetch("https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/autosuggest/v1.0/US/USD/en-US/?query=" + searchInput, {
@@ -302,25 +306,31 @@ function loadAirports(){
     for (let i = 0; i < loadAirports.length; i++) {
         
         var airport = loadAirports[i];
-        
-    
-    var searchedHistoryEl = document.createElement("button");
+       
+    var searchedHistoryEl = document.createElement("li");
     searchedHistoryEl.setAttribute("value", loadAirports[i]);
-    searchedHistoryEl.classList.add("button")
-    searchedHistoryEl.classList.add("is-link")
+    searchedHistoryEl.classList.add("is-success")
     searchedHistoryEl.textContent = airport;
-    searchedHistoryEl.addEventListener("click", function(event){
-        searchAirportsEl.innerHTML = "";
-        findairports(loadAirports[i]);
-        event.preventDefault();
+    // searchedHistoryEl.addEventListener("click", function(event){
+    //     searchAirportsEl.innerHTML = "";
+    //     findairports(loadAirports[i]);
+    //     event.preventDefault();
         
-    })
+        
+    // })
 
    searchHistoryEl.append(searchedHistoryEl);
     }
 }
 
+function deleteh(){
+    localStorage.clear("airports")
+}
+
 searchedAirportsBtn.addEventListener("click", function(){
     loadAirports();
+    airportSearchResultsEl.style.display = "none";
     searchHistoryEl.style.display = "block";
 })
+
+deleteHistoryBtn.addEventListener("click", deleteh)
