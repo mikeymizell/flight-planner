@@ -133,6 +133,7 @@ function findairports(){
     .catch(err => {
         console.error(err);
     });
+    saveAirports();
 }
 
 searchAirportsBtn.addEventListener("click", findairports);
@@ -284,16 +285,18 @@ var searchHistoryEl = document.getElementById("searchhistory");
 var searchedAirports = JSON.parse(localStorage.getItem("airports")) || [];
 
 function saveAirports(){
+    searchHistoryEl.style.display = "none";
     var airportname = searchAirportsEl.value;
-    if (searchAirportsEl.indexOf(airportname)===-1){
-    searchAirportsEl.push(airportname);
-    localStorage.setItem("airports", JSON.stringify(searchAirportsEl));
+    if (searchedAirports.indexOf(airportname)===-1){
+    searchedAirports.push(airportname);
+    localStorage.setItem("airports", JSON.stringify(searchedAirports));
     }
     loadAirports();
-    return searchAirportsEl.value;
+    return searchedAirports.value;
 }
 
 function loadAirports(){
+    searchHistoryEl.style.display = "none";
     searchHistoryEl.innerHTML = "";
     var loadAirports =   JSON.parse(localStorage.getItem("airports")) || [];
     for (let i = 0; i < loadAirports.length; i++) {
@@ -303,6 +306,8 @@ function loadAirports(){
     
     var searchedHistoryEl = document.createElement("button");
     searchedHistoryEl.setAttribute("value", loadAirports[i]);
+    searchedHistoryEl.classList.add("button")
+    searchedHistoryEl.classList.add("is-link")
     searchedHistoryEl.textContent = airport;
     searchedHistoryEl.addEventListener("click", function(event){
         searchAirportsEl.innerHTML = "";
@@ -314,3 +319,8 @@ function loadAirports(){
    searchHistoryEl.append(searchedHistoryEl);
     }
 }
+
+searchedAirportsBtn.addEventListener("click", function(){
+    loadAirports();
+    searchHistoryEl.style.display = "block";
+})
