@@ -10,6 +10,13 @@ body {
     background-color:#e7feff;
 }
 
+.heroImg {
+    background-image: url(../images/hero-airplane.jpg);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
 #amount{
     height: 25px;
 }
