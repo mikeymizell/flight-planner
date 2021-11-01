@@ -22,7 +22,7 @@ body {
     justify-content: center;
 } */
 .img1{ 
-    background-image: url(../images/currencies2.jpg) ;
+    /* background-image: url(../images/currencies2.jpg) ; */
     background-position: center center;
     background-repeat:  no-repeat;
     background-attachment: fixed;
@@ -31,7 +31,7 @@ body {
 
 }
 .img2{ 
-    background-image: url(../images/tickets.png) ;
+    /* background-image: url(../images/tickets.png) ; */
     background-position: center center;
     background-repeat:  no-repeat;
     background-attachment: fixed;
