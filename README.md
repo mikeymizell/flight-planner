@@ -16,6 +16,6 @@ A trip planner that offers cheap flight tickets and currency to currency convers
 https://mikeymizell.github.io/flight-planner/
 
 ## Contribution
-Made with ❤️ by Tarek Youssef, Michael Mizell, Claudia Ochoa, Samuel Hagos, James Reager.
+Made with ❤️ by Tarek Youssef, Michael Mizell, Samuel Hagos.
 
 ![Flight-Planner](/assets/images/Flight-Planner.png)
