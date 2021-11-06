@@ -23,7 +23,7 @@
                 </h1>
                 <div class="navbar-end">
                     <a class="navbar-item" href="#flights">Flight planner</a>
-                    <a class="navbar-item" href="#exchange">Currency Exchange</a>
+                    <a class="navbar-item" href="#currency">Currency Exchange</a>
                     <div class="navbar-item">
                         <a class="buttons">
                             <a class="button is-primary" href="https://github.com/mikeymizell/flight-planner">
@@ -61,15 +61,48 @@
                 </div>
                 <!-- <p id="noresult">Try another search</p> -->
             </div>
-            <div class = "flight control">
-                <input type="text" placeholder="from airport code" id="from-flight" class="input mb-2">
-                <input type="text" placeholder="departing yyyy-mm-dd" id="from-date" class="input mb-2">
+            <div class ="flight control">
+                <h3 class="subtitle is-5"> Departure
+                    <span class="is-flex">
+                        <input type="text" placeholder="Airport code" id="from-flight" class="input mb-2 mr-1 is-flex-grow-0 is-flex-shrink-1">
+                        <input type="text" placeholder="YYYY-MM-DD" id="from-date" class="input mb-2 ml-1 is-flex-grow-0 is-flex-shrink-1">
+                    </span>
+                </h3>
             </div>
             <div class = "flight control">
-                <input type="text" placeholder="to airport code" id="to-flight" class="input mb-2" >
-                <input type="text" placeholder="returning yyyy-mm-dd (optional)" id="return-date" class="input mb-2">
+                <h3 class="subtitle is-5"> Returning
+                    <span class="is-flex">
+                        <input type="text" placeholder="Airport code" id="to-flight" class="input mb-2 mr-1 is-flex-grow-0 is-flex-shrink-1" >
+                        <input type="text" placeholder="YYYY-MM-DD (optional)" id="return-date" class="input mb-2 ml-1 is-flex-grow-0 is-flex-shrink-1">
+                    </span>
+                </h3>
             </div>
-            <button id="flight-quotes" class="button btn is-link">Get flight quotes</button>
+            <div class="is-flex">
+                <h3 class="subtitle is-5"># of passengers
+                    <span class="select is-small ml-2 mr-5 mb-2 passengerCount">
+                        <select>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                        </select>
+                    </span>
+                </h3>
+                <span class="control mt-1">
+                    <label class="radio">
+                        <input type="radio" name="tripType" id="ROUND_TRIP" checked> Round trip
+                    </label>
+                    <label class="radio">
+                        <input type="radio" name="tripType" id="ONE_WAY"> One way
+                    </label>
+                </span>
+            </div>
+            <div>
+                <button id="flight-quotes" class="button btn is-link">Get flight quotes</button>
+            </div>
             <ul id="resuling-flight"></ul>
             <ul id="countrycurrency"></ul>
             <div id="errormodal" class="moda">
@@ -81,20 +114,26 @@
             <!-- <p id="errormodal">No results found. Try another airport, date or try again later.</p> -->
         </div>
         
-        <div class="tile is-parent notification is-info is-fullhd level-item .img-responsive img1 control" id="currency exchange">
+        <div class="tile is-parent notification is-info is-fullhd level-item .img-responsive img1 control" id="currency">
             <h3" class="title is-2 has-text-black">Currency Exchange Rates</h3>
-            <input type="number" id="amount" placeholder="Enter amount" class="input mt-3">
+
+            <input type="number" id="amount" placeholder="Enter amount" class="input">
             <div class="from-currency">
-                <p class="subtitle is-4">From</p>
-                <select name="currency" class="currency-choices"> 
-                    <!-- <option value="" disabled selected>Select a currency</option> -->
-                </select>
+                <h3 class="subtitle is-5">From</h3>
+                <span class="select is-small">
+                    <select name="currency" class="currency-choices"> 
+                        <!-- <option value="" disabled selected>Select a currency</option> -->
+                    </select>
+                </span>
             </div>
+
             <div class="to-currency">
-                <p class="subtitle is-4">To</p>
-                <select name="currency" class="currency-choices">
-                    <!-- <option value="">To currency</option> -->
-                </select>
+                <h3 class="subtitle is-5">To</h3>
+                <span class="select is-small">
+                    <select name="currency" class="currency-choices">
+                        <!-- <option value="">To currency</option> -->
+                    </select>
+                </span>  
             </div>
             <div >
                 <div id="result" class="moda">

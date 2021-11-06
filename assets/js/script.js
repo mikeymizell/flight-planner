@@ -71,21 +71,29 @@ var span = document.getElementsByClassName("close")[0];
 var x = document.getElementById("x");
 var searchInput = searchAirportsEl.value;
 
-
-
+var passengerCountEl = document.querySelector(".passengerCount select");
 
 noResultEl.style.display = "none";
 errorMessageEl.style.display = "none";
 airportSearchResultsEl.style.display = "block";
+
 function findairports(searchInput){
     airportSearchResultsEl.style.display = "block";
-    var searchInput = searchAirportsEl.value;
 
-    fetch("https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/autosuggest/v1.0/US/USD/en-US/?query=" + searchInput, {
+    searchInput = searchAirportsEl.value;
+    const searchArr = searchInput.split(" ");
+    if (searchArr.length > 1) {
+        searchInput = searchArr[0];
+        for (i = 1; i < searchArr.length; i++) {
+            searchInput = searchInput + "%20" + searchArr[i];
+        }
+    }
+
+    fetch("https://priceline-com-provider.p.rapidapi.com/v1/flights/locations?name=" + searchInput, {
         method: "GET",
         headers: {
-            "x-rapidapi-host": "skyscanner-skyscanner-flight-search-v1.p.rapidapi.com",
-            "x-rapidapi-key": "13296de5camsh8863768bdc0c0f8p1ad10bjsnec10eb3ec9a4"
+            "x-rapidapi-host": "priceline-com-provider.p.rapidapi.com",
+            "x-rapidapi-key": "b2ee2a2fbdmsh548f57564d17ed2p16a25ejsnd697d752212c"
         }
     })
     .then(response => {
@@ -94,7 +102,7 @@ function findairports(searchInput){
         console.log(results);
 
         airportSearchResultsEl.innerHTML="";
-        if(results.Places.length < 1  ){
+        if(results.length < 1  ){
             // alert("hi")
             
             // noResultEl.classList.add("has-background-black")
@@ -111,17 +119,13 @@ function findairports(searchInput){
                   noResultEl.style.display = "none";
                 }
               }
-
-
-
-
         }
-        for (let i = 0; i < results.Places.length; i++) {
- 
-            console.log(results.Places)
-            var airportList =  results.Places[i].PlaceId;
-            var placeName =  results.Places[i].PlaceName;
-            var countryName =  results.Places[i].CountryName;
+
+        for (let i = 0; i < results.length; i++) {
+            console.log(results[i].itemName)
+            var airportList =  results[i].cityCode;
+            var placeName =  results[i].cityName + ", " + results[i].provinceName;
+            var countryName =  results[i].countryCode;
             var eachAirport = document.createElement("li");
             eachAirport.classList.add("has-text-danger-dark")
             eachAirport.classList.add("has-background-black")
@@ -131,7 +135,6 @@ function findairports(searchInput){
             eachAirport.textContent = "Airport code : "+" "+ airportList.replace('-sky','') + ". " + "Located in : " +" "+ placeName + ". " + "Country: " +" "+ countryName ;
             
             airportSearchResultsEl.append(eachAirport);
-            
         }
     })
     .catch(err => {
@@ -143,10 +146,10 @@ function findairports(searchInput){
 searchAirportsBtn.addEventListener("click", findairports);
 
 
-function flightquotes(){
+function flightQuotes(){
     errorMessageEl.style.display = "none";
-    var fromInput = fromFlightEl.value + "-sky";
-    var toInput = toFlightEl.value + "-sky";
+    var fromInput = fromFlightEl.value;
+    var toInput = toFlightEl.value;
     // $(function() {
     //     $(departureDateEl).datepicker();
     //   } );
@@ -159,19 +162,33 @@ function flightquotes(){
     //   });
     var returnDateInput = returnDateEl.value;
     
+    var passengerCount = passengerCountEl.value;
+    console.log(passengerCount);
 
-    fetch("https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/browsequotes/v1.0/US/USD/en-US/"+ fromInput +"/"+ toInput + "/" + departureDateInput +"?inboundpartialdate=" + returnDateInput ,{
+    var tripType;
+    if (document.getElementById('ROUND_TRIP').checked) {
+        tripType = "ROUND_TRIP";
+    }
+    else if (document.getElementById('ONE_WAY').checked) {
+        tripType = "ONE_WAY";
+    }
+    console.log(tripType);
+
+    fetch("https://priceline-com-provider.p.rapidapi.com/v1/flights/search?sort_order=PRICE&location_departure=" + fromInput
+            +"&date_departure=" + departureDateInput + "&class_type=ECO&location_arrival=" + toInput 
+            + "&itinerary_type=" + tripType + "&price_max=20000&date_departure_return=" + returnDateInput 
+            + "&duration_max=2051&number_of_stops=0&price_min=100&number_of_passengers=" + passengerCount,{
 	    method: "GET",
 	    headers: {
-		    "x-rapidapi-host": "skyscanner-skyscanner-flight-search-v1.p.rapidapi.com",
-		    "x-rapidapi-key": "13296de5camsh8863768bdc0c0f8p1ad10bjsnec10eb3ec9a4"
+		    "x-rapidapi-host": "priceline-com-provider.p.rapidapi.com",
+		    "x-rapidapi-key": "b2ee2a2fbdmsh548f57564d17ed2p16a25ejsnd697d752212c"
 	    }
     })
     .then(function(response){
        return response.json()
     })
         .then(function(results){
-            // console.log(results);
+            console.log(results);
             // function d(some){
             //     console.log("there")
             //     currentCountryCurrencyEl.innerHTML = "";
@@ -279,7 +296,7 @@ function flightquotes(){
 // var getCurrencyURL = "http://api.countrylayer.com/v2/all?access_key=" + getCurrencyApiKey ;
 
 
-flightQuotesBtn.addEventListener("click", flightquotes);
+flightQuotesBtn.addEventListener("click", flightQuotes);
 
 
 
@@ -291,9 +308,9 @@ var searchedAirports = JSON.parse(localStorage.getItem("airports")) || [];
 function saveAirports(){
     searchHistoryEl.style.display = "none";
     var airportname = searchAirportsEl.value;
-    if (searchedAirports.indexOf(airportname)===-1){
-    searchedAirports.push(airportname);
-    localStorage.setItem("airports", JSON.stringify(searchedAirports));
+    if (searchedAirports.indexOf(airportname) === -1) {
+        searchedAirports.push(airportname);
+        localStorage.setItem("airports", JSON.stringify(searchedAirports));
     }
     loadAirports();
     return searchedAirports.value;
@@ -303,24 +320,24 @@ function loadAirports(){
     searchHistoryEl.style.display = "none";
     searchHistoryEl.innerHTML = "";
     var loadAirports =   JSON.parse(localStorage.getItem("airports")) || [];
+
     for (let i = 0; i < loadAirports.length; i++) {
-        
         var airport = loadAirports[i];
        
-    var searchedHistoryEl = document.createElement("li");
-    searchedHistoryEl.setAttribute("value", loadAirports[i]);
-    searchedHistoryEl.classList.add("has-background-black")
-    searchedHistoryEl.classList.add("is-success")
-    searchedHistoryEl.textContent = airport;
-    // searchedHistoryEl.addEventListener("click", function(event){
-    //     searchAirportsEl.innerHTML = "";
-    //     findairports(loadAirports[i]);
-    //     event.preventDefault();
-        
-        
-    // })
+        var searchedHistoryEl = document.createElement("li");
+        searchedHistoryEl.setAttribute("value", loadAirports[i]);
+        searchedHistoryEl.classList.add("has-background-black")
+        searchedHistoryEl.classList.add("is-success")
+        searchedHistoryEl.textContent = airport;
+        // searchedHistoryEl.addEventListener("click", function(event){
+        //     searchAirportsEl.innerHTML = "";
+        //     findAirports(loadAirports[i]);
+        //     event.preventDefault();
+            
+            
+        // })
 
-   searchHistoryEl.append(searchedHistoryEl);
+        searchHistoryEl.append(searchedHistoryEl);
     }
 }
 
