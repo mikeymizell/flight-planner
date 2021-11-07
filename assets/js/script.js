@@ -85,7 +85,7 @@ function findairports(searchInput){
         method: "GET",
         headers: {
             "x-rapidapi-host": "skyscanner-skyscanner-flight-search-v1.p.rapidapi.com",
-            "x-rapidapi-key": "13296de5camsh8863768bdc0c0f8p1ad10bjsnec10eb3ec9a4"
+            "x-rapidapi-key": "b2ee2a2fbdmsh548f57564d17ed2p16a25ejsnd697d752212c"
         }
     })
     .then(response => {
@@ -164,7 +164,7 @@ function flightquotes(){
 	    method: "GET",
 	    headers: {
 		    "x-rapidapi-host": "skyscanner-skyscanner-flight-search-v1.p.rapidapi.com",
-		    "x-rapidapi-key": "13296de5camsh8863768bdc0c0f8p1ad10bjsnec10eb3ec9a4"
+		    "x-rapidapi-key": "b2ee2a2fbdmsh548f57564d17ed2p16a25ejsnd697d752212c"
 	    }
     })
     .then(function(response){
