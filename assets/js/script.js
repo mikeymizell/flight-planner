@@ -87,16 +87,16 @@ function findairports(searchInput){
         for (i = 1; i < searchArr.length; i++) {
             searchInput = searchInput + "%20" + searchArr[i];
         }
+        
     }
+
+    searchInput = searchAirportsEl.value;
+    console.log(searchInput)
 
     fetch("https://priceline-com-provider.p.rapidapi.com/v1/flights/locations?name=" + searchInput, {
         method: "GET",
         headers: {
-<<<<<<< HEAD
-            "x-rapidapi-host": "skyscanner-skyscanner-flight-search-v1.p.rapidapi.com",
-=======
             "x-rapidapi-host": "priceline-com-provider.p.rapidapi.com",
->>>>>>> 2ca8e862036240d6398ea198931e7ec117a09a2b
             "x-rapidapi-key": "b2ee2a2fbdmsh548f57564d17ed2p16a25ejsnd697d752212c"
         }
     })
@@ -145,6 +145,7 @@ function findairports(searchInput){
         console.error(err);
     });
     saveAirports();
+    // return searchInput;
 }
 
 searchAirportsBtn.addEventListener("click", findairports);
@@ -182,11 +183,7 @@ function flightQuotes(){
             + "&duration_max=2051&number_of_stops=0&price_min=100&number_of_passengers=" + passengerCount,{
 	    method: "GET",
 	    headers: {
-<<<<<<< HEAD
-		    "x-rapidapi-host": "skyscanner-skyscanner-flight-search-v1.p.rapidapi.com",
-=======
 		    "x-rapidapi-host": "priceline-com-provider.p.rapidapi.com",
->>>>>>> 2ca8e862036240d6398ea198931e7ec117a09a2b
 		    "x-rapidapi-key": "b2ee2a2fbdmsh548f57564d17ed2p16a25ejsnd697d752212c"
 	    }
     })
@@ -317,6 +314,8 @@ var searchedAirports = JSON.parse(localStorage.getItem("airports")) || [];
 function saveAirports(){
     searchHistoryEl.style.display = "none";
     var airportname = searchAirportsEl.value;
+    // var airportname = searchInput;
+    console.log(airportname)
     if (searchedAirports.indexOf(airportname) === -1) {
         searchedAirports.push(airportname);
         localStorage.setItem("airports", JSON.stringify(searchedAirports));
@@ -332,12 +331,13 @@ function loadAirports(){
 
     for (let i = 0; i < loadAirports.length; i++) {
         var airport = loadAirports[i];
-       
         var searchedHistoryEl = document.createElement("li");
         searchedHistoryEl.setAttribute("value", loadAirports[i]);
-        searchedHistoryEl.classList.add("has-background-black")
-        searchedHistoryEl.classList.add("is-success")
+        searchedHistoryEl.classList.add("has-background-danger");
+        searchedHistoryEl.classList.add("is-warning");
+        searchedHistoryEl.style.display = "block";
         searchedHistoryEl.textContent = airport;
+        
         // searchedHistoryEl.addEventListener("click", function(event){
         //     searchAirportsEl.innerHTML = "";
         //     findAirports(loadAirports[i]);
@@ -347,6 +347,7 @@ function loadAirports(){
         // })
 
         searchHistoryEl.append(searchedHistoryEl);
+        console.log(searchHistoryEl)
     }
 }
 
