@@ -10,6 +10,13 @@ body {
     background-color:#e7feff;
 }
 
+.heroImg {
+    background-image: url(../images/hero-airplane.jpg);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
 #amount{
     height: 25px;
 }
@@ -22,7 +29,7 @@ body {
     justify-content: center;
 } */
 .img1{ 
-    background-image: url(../images/currencies2.jpg) ;
+    /* background-image: url(../images/currencies2.jpg) ; */
     background-position: center center;
     background-repeat:  no-repeat;
     background-attachment: fixed;
@@ -31,7 +38,7 @@ body {
 
 }
 .img2{ 
-    background-image: url(../images/tickets.png) ;
+    /* background-image: url(../images/tickets.png) ; */
     background-position: center center;
     background-repeat:  no-repeat;
     background-attachment: fixed;

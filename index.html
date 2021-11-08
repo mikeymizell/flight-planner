@@ -10,26 +10,45 @@
 
     <title>Flight Planner</title>
 </head>
+
 <body>
-    <header class="level">
-        <h1 class="title is-1 level-item has-text-centered">Ace Flight Planner</h1>
-    </header>
+    <section class="hero heroImg">
+        <header class="hero-head">
+            <nav class="navbar">
+                <h1 class="navbar-brand title is-1 mt-3 ml-5">
+                    <a class="navbar-item">
+                        <img src="./assets/images/airplane.png">
+                    </a>
+                    Ace
+                </h1>
+                <div class="navbar-end">
+                    <a class="navbar-item" href="#flights">Flight planner</a>
+                    <a class="navbar-item" href="#currency">Currency Exchange</a>
+                    <div class="navbar-item">
+                        <a class="buttons">
+                            <a class="button is-primary" href="https://github.com/mikeymizell/flight-planner">
+                                Github
+                            </a>
+                        </a>
+                    </div>
+                </div>
+            </nav>
+        </header>  
 
-    <section class="hero is-medium is-success level">
-        <div class="level-item has-text-centered">
-            <h2 class="title is-2">Allows us to help guide you on your journey to unknown places...</h2>
-
-        </div>
+        <section class="hero-body is-small is-success level">
+            <div class="level-item has-text-centered">
+                <h2 class="subtitle is-2 m-5">Allows us to help guide you on your journey to unknown places...</h2>
+            </div>
+        </section>
     </section>
 
     <section class="tile is-ancestor is-vertical">
-
-        <div class="tile is-parent notification is-primary is-fullhd level-item .img-responsive img2">
-            <h2" class="title is-2 has-text-success">Flight Rates</h2>
+        <div id="flights" class="tile is-parent notification is-primary is-fullhd level-item .img-responsive img2">
+            <h2" class="title is-2 has-text-black">Flight Rates</h2>
             <!--flight planner here-->
-            <div class="flight control">
-                <input type="text" placeholder="search airports by city,region or country" id="searchairports" class="input">
-                <button id="searchairportsbtn" class="button  btn is-link">Search airports</button>
+            <div class="flight control mt-3">
+                <input type="text" placeholder="Search airports by city, region or country" id="searchairports" class="input mb-2">
+                <button id="searchairportsbtn" class="button  btn is-link mb-2">Search airports</button>
                 <button id="searchedairbtn" class="button  btn is-link">View searched airports</button>
                 <button id="deletehistorybtn" class="button  btn is-link">Delete search history</button>
                 <ol id="airportsearchresults"></ol>
@@ -42,15 +61,48 @@
                 </div>
                 <!-- <p id="noresult">Try another search</p> -->
             </div>
-            <div class = "flight control">
-                <input type="text" placeholder="from airport code" id="from-flight" class="input" >
-                <input type="text" placeholder="departing yyyy-mm-dd" id="from-date" class="input">
+            <div class ="flight control">
+                <h3 class="subtitle is-5"> Departure
+                    <span class="is-flex">
+                        <input type="text" placeholder="Airport code" id="from-flight" class="input mb-2 mr-1 is-flex-grow-0 is-flex-shrink-1">
+                        <input type="text" placeholder="YYYY-MM-DD" id="from-date" class="input mb-2 ml-1 is-flex-grow-0 is-flex-shrink-1">
+                    </span>
+                </h3>
             </div>
             <div class = "flight control">
-                <input type="text" placeholder="to airport code" id="to-flight" class="input" >
-                <input type="text" placeholder="returning yyyy-mm-dd (optional)" id="return-date" class="input">
+                <h3 class="subtitle is-5"> Returning
+                    <span class="is-flex">
+                        <input type="text" placeholder="Airport code" id="to-flight" class="input mb-2 mr-1 is-flex-grow-0 is-flex-shrink-1" >
+                        <input type="text" placeholder="YYYY-MM-DD (optional)" id="return-date" class="input mb-2 ml-1 is-flex-grow-0 is-flex-shrink-1">
+                    </span>
+                </h3>
             </div>
-            <button id="flight-quotes" class="button btn is-link">Get flight quotes</button>
+            <div class="is-flex">
+                <h3 class="subtitle is-5"># of passengers
+                    <span class="select is-small ml-2 mr-5 mb-2 passengerCount">
+                        <select>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                        </select>
+                    </span>
+                </h3>
+                <span class="control mt-1">
+                    <label class="radio">
+                        <input type="radio" name="tripType" id="ROUND_TRIP" checked> Round trip
+                    </label>
+                    <label class="radio">
+                        <input type="radio" name="tripType" id="ONE_WAY"> One way
+                    </label>
+                </span>
+            </div>
+            <div>
+                <button id="flight-quotes" class="button btn is-link">Get flight quotes</button>
+            </div>
             <ul id="resuling-flight"></ul>
             <ul id="countrycurrency"></ul>
             <div id="errormodal" class="moda">
@@ -61,20 +113,27 @@
             </div>
             <!-- <p id="errormodal">No results found. Try another airport, date or try again later.</p> -->
         </div>
-        <div class="tile is-parent notification is-warning is-fullhd level-item .img-responsive img1 control" id="currency">
-            <h3" class="title is-2 has-text-warning">Currency Exchange Rates</h3>
+        
+        <div class="tile is-parent notification is-info is-fullhd level-item .img-responsive img1 control" id="currency">
+            <h3" class="title is-2 has-text-black">Currency Exchange Rates</h3>
+
             <input type="number" id="amount" placeholder="Enter amount" class="input">
             <div class="from-currency">
-                <p class="subtitle is-4">From</p>
-                <select name="currency" class="currency-choices"> 
-                    <!-- <option value="" disabled selected>Select a currency</option> -->
-                </select>
+                <h3 class="subtitle is-5">From</h3>
+                <span class="select is-small">
+                    <select name="currency" class="currency-choices"> 
+                        <!-- <option value="" disabled selected>Select a currency</option> -->
+                    </select>
+                </span>
             </div>
+
             <div class="to-currency">
-                <p class="subtitle is-4">To</p>
-                <select name="currency" class="currency-choices">
-                    <!-- <option value="">To currency</option> -->
-                </select>
+                <h3 class="subtitle is-5">To</h3>
+                <span class="select is-small">
+                    <select name="currency" class="currency-choices">
+                        <!-- <option value="">To currency</option> -->
+                    </select>
+                </span>  
             </div>
             <div >
                 <div id="result" class="moda">
