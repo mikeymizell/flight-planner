@@ -353,7 +353,8 @@ function loadAirports(){
 }
 
 function deleteh(){
-    localStorage.clear("airports")
+    localStorage.clear("airports");
+    searchHistoryEl.style.display = "none";
 }
 
 searchedAirportsBtn.addEventListener("click", function(){
