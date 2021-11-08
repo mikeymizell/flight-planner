@@ -163,7 +163,6 @@ function flightQuotes(){
     var returnDateInput = returnDateEl.value;
     
     var passengerCount = passengerCountEl.value;
-    console.log(passengerCount);
 
     var tripType;
     if (document.getElementById('ROUND_TRIP').checked) {
@@ -172,7 +171,6 @@ function flightQuotes(){
     else if (document.getElementById('ONE_WAY').checked) {
         tripType = "ONE_WAY";
     }
-    console.log(tripType);
 
     fetch("https://priceline-com-provider.p.rapidapi.com/v1/flights/search?sort_order=PRICE&location_departure=" + fromInput
             +"&date_departure=" + departureDateInput + "&class_type=ECO&location_arrival=" + toInput 
@@ -188,7 +186,7 @@ function flightQuotes(){
        return response.json()
     })
         .then(function(results){
-            console.log(results);
+            // console.log(results);
             // function d(some){
             //     console.log("there")
             //     currentCountryCurrencyEl.innerHTML = "";
@@ -214,59 +212,62 @@ function flightQuotes(){
             //     })
             // }
              resultingFlightEl.innerHTML = "";
-            for (let i = 0; i < results.Quotes.length; i++) {
-                var ratesEl = results.Quotes[i].MinPrice;
+            for (let i = 0; i < results.totalTripSummary.airline.length; i++) {
+                console.log(results.totalTripSummary.airline);
+                var ratesEl = results.totalTripSummary.airline[i].lowestTotalFare.amount;
+                console.log(ratesEl);
                 rates = document.createElement("li");
                 rates.classList.add("has-background-black")
                 rates.classList.add("is-size-5")
+                rates.classList.add("has-text-white")
                 // rates.classList.add("has-text-danger-dark")
                 rates.classList.add("has-text-weight-semibold")
-                rates.textContent = "Your trip will cost : "+ ratesEl + " $ ; through : " + results.Carriers[i].Name;
+                rates.textContent = "Your trip will cost : $"+ ratesEl + " through: " + results.totalTripSummary.airline[i].code;
                 resultingFlightEl.appendChild(rates);
             }
             // for (let i = 0; i < results.Places.length; i++) {
-            for (let i = 0; i < results.Places.length; i++) {
+            // for (let i = 0; i < results.Places.length; i++) {
                 
             
-            var destinationCountry = results.Places[1].CountryName;
-            console.log(destinationCountry);
-            var departureCountry = results.Places[0].CountryName;
-            console.log(departureCountry);
-            // var destinationCountry= "";
-            // var departureCountry = "";
+            // var destinationCountry = results.Places[1].CountryName;
+            // console.log(destinationCountry);
+            // var departureCountry = results.Places[0].CountryName;
+            // console.log(departureCountry);
+            // // var destinationCountry= "";
+            // // var departureCountry = "";
 
 
 
-            function getCountryCurrency(){
-                currentCountryCurrencyEl.innerHTML = "";
-                for (var key of Object.keys(countriesCurrencies)) {
-                    // if(countriesCurrencies[key] === destinationCountry || countriesCurrencies[key] === departureCountry){
-                    if(countriesCurrencies[key] === destinationCountry || countriesCurrencies[key] === departureCountry){
+            // function getCountryCurrency(){
+            //     currentCountryCurrencyEl.innerHTML = "";
+            //     for (var key of Object.keys(countriesCurrencies)) {
+            //         // if(countriesCurrencies[key] === destinationCountry || countriesCurrencies[key] === departureCountry){
+            //         if(countriesCurrencies[key] === destinationCountry || countriesCurrencies[key] === departureCountry){
 
-                        var twoCurrencies1 = document.createElement("li");
-                        var twoCurrencies2 = document.createElement("li");
-                        twoCurrencies1.classList.add("has-background-black")
-                        twoCurrencies1.classList.add("has-text-danger-dark")
-                        twoCurrencies1.classList.add("has-text-weight-semibold")
-                        twoCurrencies1.classList.add("is-size-6")
-                        twoCurrencies2.classList.add("has-background-black")
-                        twoCurrencies2.classList.add("has-text-danger-dark")
-                        twoCurrencies2.classList.add("has-text-weight-semibold")
-                        twoCurrencies2.classList.add("is-size-6")
-                        // twoCurrencies1.textContent= key;
-                        twoCurrencies2.textContent= "The currencies needed are: " + key;
-                        currentCountryCurrencyEl.append(twoCurrencies1);
-                        currentCountryCurrencyEl.append(twoCurrencies2);
-                        // currentCountryCurrencyEl.textContent = key;
+            //             var twoCurrencies1 = document.createElement("li");
+            //             var twoCurrencies2 = document.createElement("li");
+            //             twoCurrencies1.classList.add("has-background-black")
+            //             twoCurrencies1.classList.add("has-text-danger-dark")
+            //             twoCurrencies1.classList.add("has-text-weight-semibold")
+            //             twoCurrencies1.classList.add("is-size-6")
+            //             twoCurrencies2.classList.add("has-background-black")
+            //             twoCurrencies2.classList.add("has-text-danger-dark")
+            //             twoCurrencies2.classList.add("has-text-weight-semibold")
+            //             twoCurrencies2.classList.add("is-size-6")
+            //             // twoCurrencies1.textContent= key;
+            //             twoCurrencies2.textContent= "The currencies needed are: " + key;
+            //             currentCountryCurrencyEl.append(twoCurrencies1);
+            //             currentCountryCurrencyEl.append(twoCurrencies2);
+            //             // currentCountryCurrencyEl.textContent = key;
                         
-                    }}
+            //         }}
                     
                 
              
-            }
-            }   
-            getCountryCurrency();
-            return destinationCountry;
+            //}
+            //}   
+            //getCountryCurrency();
+            //return destinationCountry;
         })
          
     .catch(err => {
