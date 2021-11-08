@@ -6,8 +6,12 @@ SO THAT I can plan a trip accordingly
 GIVEN a flight price checker with form inputs  
 WHEN I search for an airport in a city, country or region  
 THEN I am presented with a list for aiport codes and where they are located  
-WHEN I type the destination and departure airport codes  
+WHEN I type the destination and departure airport codes   
 THEN I am presented with a list of the cheapest tickets between the two airports, the name of airline providers, and   the currencies used in both cities.   
+WHEN I view the list of the cheapest tickets  
+THEN I am able to select the number of passengers and a One way or a Round trip  
+WHEN I select the number of passengers and a One way or a Round trip and submit the search  
+THEN the price changes accordingly  
 WHEN I view the different currencies and if they are different  
 THEN I am able to choose the currency that I have and the currency that I want to convert to from a dropdown menu  
 WHEN I choose each currency  
