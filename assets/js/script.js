@@ -191,7 +191,7 @@ function flightQuotes(){
        return response.json()
     })
         .then(function(results){
-            
+            console.log(passengerCount)
             console.log(results);
             // function d(some){
             //     console.log("there")
@@ -220,7 +220,7 @@ function flightQuotes(){
              resultingFlightEl.innerHTML = "";
             for (let i = 0; i < results.totalTripSummary.airline.length; i++) {
                 console.log(results.totalTripSummary.airline);
-                var ratesEl = results.totalTripSummary.airline[i].lowestTotalFare.amount;
+                var ratesEl = ((results.totalTripSummary.airline[i].lowestTotalFare.amount) * passengerCount).toFixed(2);
                 console.log(ratesEl);
                 rates = document.createElement("li");
                 rates.classList.add("has-background-black")
