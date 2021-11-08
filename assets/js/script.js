@@ -191,7 +191,8 @@ function flightQuotes(){
        return response.json()
     })
         .then(function(results){
-            // console.log(results);
+            
+            console.log(results);
             // function d(some){
             //     console.log("there")
             //     currentCountryCurrencyEl.innerHTML = "";
@@ -231,48 +232,48 @@ function flightQuotes(){
                 resultingFlightEl.appendChild(rates);
             }
             // for (let i = 0; i < results.Places.length; i++) {
-            // for (let i = 0; i < results.Places.length; i++) {
+            for (let i = 0; i < results.airport.length; i++) {
                 
             
-            // var destinationCountry = results.Places[1].CountryName;
-            // console.log(destinationCountry);
-            // var departureCountry = results.Places[0].CountryName;
-            // console.log(departureCountry);
-            // // var destinationCountry= "";
-            // // var departureCountry = "";
+            var destinationCountry = results.airport[0].country;
+            console.log(destinationCountry);
+            var departureCountry = results.airport[1].country;
+            console.log(departureCountry);
+            // var destinationCountry= "";
+            // var departureCountry = "";
 
 
 
-            // function getCountryCurrency(){
-            //     currentCountryCurrencyEl.innerHTML = "";
-            //     for (var key of Object.keys(countriesCurrencies)) {
-            //         // if(countriesCurrencies[key] === destinationCountry || countriesCurrencies[key] === departureCountry){
-            //         if(countriesCurrencies[key] === destinationCountry || countriesCurrencies[key] === departureCountry){
+            function getCountryCurrency(){
+                currentCountryCurrencyEl.innerHTML = "";
+                for (var key of Object.keys(countriesCurrencies)) {
+                    // if(countriesCurrencies[key] === destinationCountry || countriesCurrencies[key] === departureCountry){
+                    if(countriesCurrencies[key] === destinationCountry || countriesCurrencies[key] === departureCountry){
 
-            //             var twoCurrencies1 = document.createElement("li");
-            //             var twoCurrencies2 = document.createElement("li");
-            //             twoCurrencies1.classList.add("has-background-black")
-            //             twoCurrencies1.classList.add("has-text-danger-dark")
-            //             twoCurrencies1.classList.add("has-text-weight-semibold")
-            //             twoCurrencies1.classList.add("is-size-6")
-            //             twoCurrencies2.classList.add("has-background-black")
-            //             twoCurrencies2.classList.add("has-text-danger-dark")
-            //             twoCurrencies2.classList.add("has-text-weight-semibold")
-            //             twoCurrencies2.classList.add("is-size-6")
-            //             // twoCurrencies1.textContent= key;
-            //             twoCurrencies2.textContent= "The currencies needed are: " + key;
-            //             currentCountryCurrencyEl.append(twoCurrencies1);
-            //             currentCountryCurrencyEl.append(twoCurrencies2);
-            //             // currentCountryCurrencyEl.textContent = key;
+                        var twoCurrencies1 = document.createElement("li");
+                        var twoCurrencies2 = document.createElement("li");
+                        twoCurrencies1.classList.add("has-background-black")
+                        twoCurrencies1.classList.add("has-text-danger-dark")
+                        twoCurrencies1.classList.add("has-text-weight-semibold")
+                        twoCurrencies1.classList.add("is-size-6")
+                        twoCurrencies2.classList.add("has-background-black")
+                        twoCurrencies2.classList.add("has-text-danger-dark")
+                        twoCurrencies2.classList.add("has-text-weight-semibold")
+                        twoCurrencies2.classList.add("is-size-6")
+                        // twoCurrencies1.textContent= key;
+                        twoCurrencies2.textContent= "The currencies needed are: " + key;
+                        currentCountryCurrencyEl.append(twoCurrencies1);
+                        currentCountryCurrencyEl.append(twoCurrencies2);
+                        // currentCountryCurrencyEl.textContent = key;
                         
-            //         }}
+                    }}
                     
                 
              
-            //}
-            //}   
-            //getCountryCurrency();
-            //return destinationCountry;
+            }
+            }   
+            getCountryCurrency();
+            return destinationCountry;
         })
          
     .catch(err => {
